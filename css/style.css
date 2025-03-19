@@ -1,0 +1,159 @@
+/* 
+--- 01 TYPOGRAPHY SYSTEM
+
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights:
+Default - 300
+Md - 400
+
+- Line heights:
+
+- Letter spacing
+
+
+--- 02 COLORS
+#C7C7C7 #f9f9f9 #e3e3e3 #d2d2d2
+
+
+#3D3D3D Text on #fafaff
+#c7c7c7 Text on #1C1C1C
+
+--- 05 Shadows
+
+--- 06 BORDER-RADIUS
+
+--- 07 WHITESPACE
+- Whitespace System (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+:root {
+  --color-primary: #e5383b;
+  /* --color-secondary: ;
+  --color-tertiary: ;
+  --color-primary-darker: ;
+  --color-secondary-darker: ;
+  --color-tertiary-darker: ;
+  --color-primary-opacity: ;
+  --color-secondary-opacity: ;
+  --color-tertiary-opacity: ;
+  --gradient-primary: ;
+  --gradient-secondary: ;
+  --gradient-tertiary: ; */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Lora", serif;
+  line-height: 1;
+  font-weight: 300;
+  color: #c7c7c7;
+}
+
+/* GENERAL STYLES */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn--sm {
+  font-size: 1.8rem;
+  color: #fcebeb;
+  background-color: var(--color-primary);
+  padding: 0.8rem 2rem;
+}
+
+/* HEADER SECTION */
+.header {
+  padding: 0 6.4rem;
+  background-color: #fafaff;
+}
+
+.header__nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  height: 9.6rem;
+  align-items: center;
+}
+
+/* NAVIGATION */
+.nav__sections {
+  /* NAV Position */
+  justify-self: start;
+}
+
+.nav__list {
+  list-style-type: none;
+  display: flex;
+  gap: 4.2rem;
+}
+
+.nav__item {
+  color: #3d3d3d;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+}
+
+.nav__name {
+  align-self: center;
+  font-size: 5.2rem;
+  font-weight: 400;
+  color: #1c1c1c;
+  font-style: italic;
+
+  /* NAV Position */
+  justify-self: center;
+}
+
+.nav__cta {
+  color: #3d3d3d;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.8rem 2rem;
+  background-color: #ecebe4;
+
+  /* NAV Position */
+  justify-self: end;
+}
+
+/* HERO */
+.hero {
+  background-color: #eef0f2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  height: 80vh;
+}
+
+.hero__content {
+  padding: 0 6.4rem;
+}
+
+.content__header {
+  font-size: 5.2rem;
+  line-height: 1.4;
+  color: #3d3d3d;
+  margin-bottom: 5.2rem;
+}
+
+.content__header--italic {
+  font-style: italic;
+}
+
+.hero__img {
+  height: 100%;
+  background-image: url("../images/photo_2_2025-03-19_12-08-50.jpg");
+  background-size: cover;
+}

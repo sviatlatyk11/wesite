@@ -170,8 +170,8 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  border-top: 1px solid #c7c7c7;
-  border-bottom: 1px solid #c7c7c7;
+  border-top: 1px solid #ecebe4;
+  /* border-bottom: 1px solid #c7c7c7; */
 }
 
 .hero__content {
@@ -202,11 +202,10 @@ body {
 /* SCROLL SECTION */
 .scroll {
   padding: 3.2rem 0;
-  background-color: #fafaff;
+  background-color: #1c1c1c;
 
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #c7c7c7;
 }
 
 .scroll__container {
@@ -219,7 +218,7 @@ body {
   font-size: 1.6rem;
   letter-spacing: 0.5px;
   font-weight: 400;
-  color: #3d3d3d;
+  color: #fafaff;
 }
 
 /* INCLUDES SECTION */
@@ -240,6 +239,7 @@ body {
 }
 
 .includes__carousel {
+  position: relative;
   width: 75%;
   height: 60rem;
 
@@ -252,7 +252,7 @@ body {
 }
 
 .include {
-  background-color: #fafaff;
+  background-color: #daddd8;
 }
 
 .include--primary {
@@ -263,4 +263,49 @@ body {
 .include--secondary {
   width: 30%;
   height: 80%;
+}
+
+.includes__btn {
+  position: absolute;
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: 100%;
+  background-color: rgba(218, 221, 216, 0.5);
+}
+
+.includes__btn--left {
+  left: 0;
+  top: 50%;
+  transform: translate(-150%, -50%);
+}
+
+.includes__btn--right {
+  right: 0;
+  top: 50%;
+  transform: translate(150%, -50%);
+}
+
+/* RESULTS */
+.results {
+  height: 80vh;
+  /* border-top: 2px solid #eef0f2; */
+  background-color: #eef0f2;
+}
+
+.results__container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.results__img {
+  height: 100%;
+  width: 100%;
+  background-image: url("../images/photo_1_2025-03-19_12-08-50.jpg");
+  background-size: cover;
+  background-position: center top;
 }

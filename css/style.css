@@ -54,7 +54,7 @@ html {
 }
 
 body {
-  font-family: "Lora", serif;
+  font-family: "Work Sans", serif;
   line-height: 1;
   font-weight: 300;
   color: #c7c7c7;
@@ -75,11 +75,20 @@ body {
 }
 
 .btn--lg {
-  font-size: 1.8rem;
+  font-size: 2rem;
   letter-spacing: 0.5px;
   color: #222;
-  padding: 0.8rem 2.4rem;
-  background-color: #daddd8;
+
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #1c1c1c;
+}
+
+.subheading {
+  color: #3d3d3d;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 2.4rem;
 }
 
 /* HEADER SECTION */
@@ -89,8 +98,7 @@ body {
 }
 
 .header__nav {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
 
   height: 9.6rem;
   align-items: center;
@@ -98,51 +106,53 @@ body {
 
 /* NAVIGATION */
 .nav__sections {
-  /* NAV Position */
-  justify-self: start;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
 .nav__list {
   list-style-type: none;
   display: flex;
-  gap: 4.2rem;
+  gap: 5.2rem;
 }
 
 .nav__item {
   color: #3d3d3d;
   text-transform: uppercase;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 .nav__name {
-  align-self: center;
-  font-size: 5.2rem;
+  font-family: "Lora", serif;
+  font-size: 6.2rem;
   font-weight: 400;
+  letter-spacing: 0.5px;
+
   color: #1c1c1c;
   font-style: italic;
 
-  /* NAV Position */
-  justify-self: center;
+  justify-self: start;
 }
 
 .nav__cta {
-  color: #fcebeb;
+  margin-left: 5.2rem;
+  color: #3d3d3d;
   font-size: 1.8rem;
-  letter-spacing: 0.5px;
-  padding: 0.8rem 2rem;
-  background-color: var(--color-primary);
 
-  /* NAV Position */
-  justify-self: end;
+  background-color: #daddd8;
+  padding: 0.8rem 2rem;
 }
 
 /* HERO */
 .hero {
   background-color: #eef0f2;
+  height: 85vh;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  height: 85vh;
+  border-top: 1px solid #c7c7c7;
 }
 
 .hero__content {
@@ -151,9 +161,10 @@ body {
 }
 
 .content__header {
+  font-family: "Lora", serif;
   color: #3d3d3d;
   line-height: 1.4;
-  margin-bottom: 6.2rem;
+  margin-bottom: 7.4rem;
 
   font-style: italic;
   font-size: 6.2rem;
@@ -161,7 +172,6 @@ body {
 
 .content__header--emphasise {
   font-style: normal;
-  color: #222;
 }
 
 .hero__img {

@@ -20,6 +20,7 @@ Md - 400
 #3D3D3D Text on #fafaff
 #c7c7c7 Text on #1C1C1C
 #363636 Text on #ECEBE4
+#2B2B2B Text On #DADDD8
 --- 05 Shadows
 
 --- 06 BORDER-RADIUS
@@ -41,7 +42,7 @@ Md - 400
   --gradient-primary: ;
   --gradient-secondary: ;
   --gradient-tertiary: ;
-  --scroll-speed: 8s;
+  --scroll-speed: 6s;
   --scroll-gap: 5.2rem;
 }
 
@@ -204,9 +205,22 @@ body {
 /* SCROLL SECTION */
 .scroll {
   padding: 3.2rem 0;
-  background-color: #1c1c1c;
   display: flex;
   align-items: center;
+}
+
+.scroll--1 {
+  background-color: #daddd8;
+  color: #2b2b2b;
+  border-top: 1px solid #fafaff;
+  border-bottom: 1px solid #fafaff;
+}
+
+.scroll--2 {
+  background-color: #1c1c1c;
+  color: #fafaff;
+  border-top: 1px solid #fafaff;
+  border-bottom: 1px solid #fafaff;
 }
 
 .scroll__container {
@@ -221,9 +235,9 @@ body {
 .scroll__item {
   font-family: inherit;
   font-size: 1.6rem;
+  text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 400;
-  color: #fafaff;
   display: inline-block;
   animation: scroll__container var(--scroll-speed) linear infinite;
 }

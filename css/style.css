@@ -30,9 +30,9 @@ Md - 400
 */
 :root {
   --color-primary: #e5383b;
-  /* --color-secondary: ;
+  --color-secondary: ;
   --color-tertiary: ;
-  --color-primary-darker: ;
+  --color-primary-darker: #731c1e;
   --color-secondary-darker: ;
   --color-tertiary-darker: ;
   --color-primary-opacity: ;
@@ -40,7 +40,7 @@ Md - 400
   --color-tertiary-opacity: ;
   --gradient-primary: ;
   --gradient-secondary: ;
-  --gradient-tertiary: ; */
+  --gradient-tertiary: ;
 }
 
 * {
@@ -64,13 +64,22 @@ body {
 .btn {
   display: inline-block;
   text-decoration: none;
+  border-radius: 0.2rem;
 }
 
 .btn--sm {
   font-size: 1.8rem;
-  color: #fcebeb;
-  background-color: var(--color-primary);
+  color: #3d3d3d;
+  background-color: #daddd8;
   padding: 0.8rem 2rem;
+}
+
+.btn--lg {
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+  color: #222;
+  padding: 0.8rem 2.4rem;
+  background-color: #daddd8;
 }
 
 /* HEADER SECTION */
@@ -117,12 +126,11 @@ body {
 }
 
 .nav__cta {
-  color: #3d3d3d;
+  color: #fcebeb;
   font-size: 1.8rem;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
   padding: 0.8rem 2rem;
-  background-color: #ecebe4;
+  background-color: var(--color-primary);
 
   /* NAV Position */
   justify-self: end;
@@ -134,22 +142,26 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  height: 80vh;
+  height: 85vh;
 }
 
 .hero__content {
   padding: 0 6.4rem;
+  text-align: center;
 }
 
 .content__header {
-  font-size: 5.2rem;
-  line-height: 1.4;
   color: #3d3d3d;
-  margin-bottom: 5.2rem;
+  line-height: 1.4;
+  margin-bottom: 6.2rem;
+
+  font-style: italic;
+  font-size: 6.2rem;
 }
 
-.content__header--italic {
-  font-style: italic;
+.content__header--emphasise {
+  font-style: normal;
+  color: #222;
 }
 
 .hero__img {

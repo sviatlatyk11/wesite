@@ -277,7 +277,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 3.2rem;
   margin-bottom: 5.2rem;
 
   align-self: center;
@@ -285,12 +285,14 @@ body {
 
 .include {
   background-color: #daddd8;
-  /* border: 1px solid #eef0f2; */
   border-radius: 0.5rem;
   padding: 4.8rem 3.2rem 6.4rem;
 
   display: flex;
   flex-direction: column;
+
+  background-size: cover;
+  background-position: center;
 }
 
 .include__number {
@@ -320,20 +322,50 @@ body {
 .include--primary {
   width: 40%;
   height: 100%;
-
-  background-image: linear-gradient(
-      to top left,
-      rgba(13, 13, 13, 0.4),
-      rgba(13, 13, 13, 0.4)
-    ),
-    url("../content/img/zoom4.jpg");
-  background-size: cover;
-  background-position: center;
 }
 
 .include--secondary {
   width: 30%;
   height: 80%;
+}
+
+.include--secondary .include__number {
+  font-size: 4.4rem;
+}
+
+.include--secondary .include__text {
+  font-size: 2.4rem;
+}
+
+.include--secondary .subheading--include {
+  font-size: 1.4rem;
+}
+
+.include--1 {
+  background-image: linear-gradient(
+      to top left,
+      rgba(13, 13, 13, 0.4),
+      rgba(13, 13, 13, 0.4)
+    ),
+    url("../content/img/includes/plan.jpg");
+}
+
+.include--2 {
+  background-image: linear-gradient(
+      to top left,
+      rgba(13, 13, 13, 0.4),
+      rgba(13, 13, 13, 0.4)
+    ),
+    url("../content/img/includes/zoom.jpg");
+}
+
+.include--3 {
+  background-image: linear-gradient(
+      to top left,
+      rgba(13, 13, 13, 0.4),
+      rgba(13, 13, 13, 0.4)
+    ),
+    url("../content/img/includes/prize.jpg");
 }
 
 .includes__btn {
@@ -480,4 +512,9 @@ body {
   background-image: url("../images/photo_3_2025-03-19_12-08-50.jpg");
   background-size: cover;
   background-position: right top;
+}
+
+/* HELPER CLASSES */
+.blur {
+  filter: grayscale(0.7);
 }

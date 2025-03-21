@@ -58,4 +58,4 @@ Don’t miss your chance to transform your life! Secure your spot in this exclus
 
 ## Footer
 
-For more information, follow us on social media or contact us directly. Stay updated with the latest insights and opportunities.
+q

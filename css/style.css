@@ -285,11 +285,50 @@ body {
 
 .include {
   background-color: #daddd8;
+  /* border: 1px solid #eef0f2; */
+  border-radius: 0.5rem;
+  padding: 4.8rem 3.2rem 6.4rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.include__number {
+  font-family: "Lora";
+  letter-spacing: 0.2rem;
+  font-size: 5.2rem;
+  color: #d2d2d2;
+}
+
+.include__content {
+  margin-top: auto;
+}
+
+.subheading--include {
+  color: #e3e3e3;
+}
+
+.include__text {
+  font-family: inherit;
+  /* letter-spacing: 1px; */
+  line-height: 1.4;
+  font-size: 3.2rem;
+
+  color: #f9f9f9;
 }
 
 .include--primary {
   width: 40%;
   height: 100%;
+
+  background-image: linear-gradient(
+      to top left,
+      rgba(13, 13, 13, 0.4),
+      rgba(13, 13, 13, 0.4)
+    ),
+    url("../content/img/zoom4.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .include--secondary {
@@ -416,8 +455,8 @@ body {
 }
 
 .social__icon {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 3.2rem;
+  height: 3.2rem;
 }
 
 .footer__name {
@@ -428,7 +467,6 @@ body {
   font-size: 8.6rem;
   color: #1c1c1c;
 
-  align-self: flex-start;
   margin-top: auto;
 }
 

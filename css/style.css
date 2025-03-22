@@ -69,7 +69,8 @@ body {
 }
 
 .container {
-  width: 130rem;
+  max-width: 130rem;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -168,6 +169,10 @@ body {
   padding: 0.8rem 2rem;
 }
 
+.nav__btn {
+  color: #3d3d3d;
+}
+
 /* HERO */
 .hero {
   background-color: #eef0f2;
@@ -229,10 +234,9 @@ body {
 .scroll__container {
   display: flex;
   gap: var(--scroll-gap);
-
   white-space: nowrap;
   overflow: hidden;
-  box-sizing: border-box;
+  width: 100vw; /* Ensure it fits the screen */
 }
 
 .scroll__item {
@@ -442,6 +446,7 @@ body {
 .results {
   border-top: 1px solid #daddd8;
   background-color: #fafaff;
+  overflow: hidden;
 }
 
 .container--results {

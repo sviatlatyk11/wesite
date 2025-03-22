@@ -7,6 +7,8 @@ const includes = document.querySelectorAll(".include");
 const includesBtnLeft = document.querySelector(".includes__btn--left");
 const includesBtnRight = document.querySelector(".includes__btn--right");
 
+const nav = document.querySelector(".nav");
+
 // Results Accordian
 let currentResult = 0;
 

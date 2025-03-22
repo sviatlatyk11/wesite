@@ -171,6 +171,7 @@ body {
 
 .nav__btn {
   color: #3d3d3d;
+  transition: all 0.4s ease;
 }
 
 /* HERO */
@@ -277,7 +278,7 @@ body {
 
 .includes__carousel {
   position: relative;
-  width: 75%;
+  width: 85%;
   height: 60rem;
 
   display: grid;

@@ -7,7 +7,8 @@ const includes = document.querySelectorAll(".include");
 const includesBtnLeft = document.querySelector(".includes__btn--left");
 const includesBtnRight = document.querySelector(".includes__btn--right");
 
-const nav = document.querySelector(".nav");
+const nav = document.querySelector(".header__nav");
+const navBtns = document.querySelectorAll(".nav__btn");
 
 // Results Accordian
 let currentResult = 0;
@@ -108,3 +109,31 @@ setIncludes();
 
 includesBtnLeft.addEventListener("click", prevCurrentInclude);
 includesBtnRight.addEventListener("click", nextCurrentInclude);
+
+// Nav Opacity
+nav.addEventListener("mouseover", function (e) {
+  const target = e.target.closest(".nav__btn");
+  if (target) {
+    navBtns.forEach((el) => {
+      if (el != target) el.style.opacity = 0.5;
+    });
+    target.style.opacity = 1;
+  } else {
+    navBtns.forEach((el) => {
+      el.style.opacity = 1;
+    });
+  }
+});
+
+// Nav Sections
+navBtns.forEach((btn) => {
+  if (btn.dataset.section) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      document
+        .querySelector(`.${btn.dataset.section}`)
+        .scrollIntoView({ behavior: "smooth" });
+    });
+  }
+});

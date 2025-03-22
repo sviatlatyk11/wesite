@@ -298,6 +298,8 @@ body {
 
   background-size: cover;
   background-position: center;
+
+  transition: filter 1.2s;
 }
 
 .include__number {
@@ -329,6 +331,8 @@ body {
 .include--2 {
   grid-column: 2;
   grid-row: 1;
+
+  transition: filter 1.2s, transform 2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .include--3 {
@@ -339,7 +343,7 @@ body {
 .include--1,
 .include--3 {
   transform: scale(0.925);
-  filter: grayscale(0.7);
+  filter: grayscale(0.8);
 }
 
 .include--1 .include__number,
@@ -593,4 +597,5 @@ body {
 
 .include--hidden {
   display: none;
+  filter: blur(12px) grayscale(0.8);
 }

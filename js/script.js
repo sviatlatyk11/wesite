@@ -10,6 +10,8 @@ const includesBtnRight = document.querySelector(".includes__btn--right");
 const nav = document.querySelector(".header__nav");
 const navBtns = document.querySelectorAll(".nav__btn");
 
+const sections = document.querySelectorAll(".section--hidden");
+
 // Results Accordian
 let currentResult = 0;
 
@@ -136,4 +138,24 @@ navBtns.forEach((btn) => {
         .scrollIntoView({ behavior: "smooth" });
     });
   }
+});
+
+// Section Reveal
+const revealSection = function (entries, _) {
+  entries.forEach((entry) => {
+    console.log(entry);
+    if (entry.isIntersecting) {
+      entry.target.classList.remove("section--hidden");
+      sectionObserver.unobserve(entry.target);
+    }
+  });
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0,
+});
+
+sections.forEach((el) => {
+  sectionObserver.observe(el);
 });

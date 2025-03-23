@@ -21,6 +21,7 @@ Md - 400
 #c7c7c7 Text on #1C1C1C
 #363636 Text on #ECEBE4
 #2B2B2B Text On #DADDD8
+#fcebeb Text On #e5383b
 --- 05 Shadows
 
 --- 06 BORDER-RADIUS
@@ -94,6 +95,14 @@ body {
   background-color: #daddd8;
   padding: 0.8rem 2rem;
   border-radius: 0.2rem;
+
+  transition: all 0.4s ease;
+}
+
+.btn--sm:hover,
+.btn--sm:active {
+  background-color: var(--color-primary);
+  color: #fcebeb;
 }
 
 .btn--lg {
@@ -101,8 +110,19 @@ body {
   letter-spacing: 0.5px;
   color: #222;
 
-  padding-bottom: 0.8rem;
+  padding: 0.8rem 0;
   border-bottom: 1px solid #1c1c1c;
+
+  transition: all 0.4s ease;
+}
+
+.btn--lg:hover,
+.btn--lg:active {
+  border-bottom: 1px solid transparent;
+  background-color: var(--color-primary);
+  color: #fcebeb;
+  padding: 0.8rem 2rem;
+  border-radius: 0.2rem;
 }
 
 /* HEADINGS */
@@ -432,6 +452,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition: all 0.4s ease;
+}
+
+.includes__btn:hover,
+.includes__btn:active {
+  background-color: #daddd8;
+}
+
+.includes__btn:hover .includes__icon,
+.includes__btn:active .includes__icon {
+  stroke: #2b2b2b;
 }
 
 .includes__btn--left {
@@ -450,6 +482,8 @@ body {
   width: 2.4rem;
   height: 2.4rem;
   stroke: #777777;
+
+  transition: all 0.4s ease;
 }
 
 /* RESULTS */
@@ -518,6 +552,17 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.results__btn:hover .results__icon,
+.results__btn:active .results__icon {
+  width: 2.8rem;
+  height: 2.8rem;
+  stroke: #1c1c1c;
 }
 
 .results__btn--left {
@@ -532,6 +577,8 @@ body {
   width: 2.4rem;
   height: 2.4rem;
   stroke: #3d3d3d;
+
+  transition: all 0.4s ease;
 }
 
 /* FOOTER */

@@ -1,16 +1,23 @@
 // DOM Elements
+// Results Carousel
 const resultContents = document.querySelectorAll(".results__content");
 const resultBtnLeft = document.querySelector(".results__btn--left");
 const resultBtnRight = document.querySelector(".results__btn--right");
 
+// Includes Carousel
 const includes = document.querySelectorAll(".include");
 const includesBtnLeft = document.querySelector(".includes__btn--left");
 const includesBtnRight = document.querySelector(".includes__btn--right");
 
+// Navigation Highlights
 const nav = document.querySelector(".header__nav");
 const navBtns = document.querySelectorAll(".nav__btn");
 
+// Section Navigation
 const sections = document.querySelectorAll(".section--hidden");
+
+// Block Movement
+const blockEls = document.querySelectorAll(".for__block");
 
 // Results Accordian
 let currentResult = 0;
@@ -29,7 +36,6 @@ setResult();
 
 const nextResult = function (e) {
   e.preventDefault();
-  console.log("1");
   if (currentResult < resultContents.length - 1) currentResult++;
   else currentResult = 0;
 
@@ -38,7 +44,6 @@ const nextResult = function (e) {
 
 const prevResult = function (e) {
   e.preventDefault();
-  console.log("1");
   if (currentResult > 0) currentResult--;
   else currentResult = 2;
 
@@ -143,7 +148,6 @@ navBtns.forEach((btn) => {
 // Section Reveal
 const revealSection = function (entries, _) {
   entries.forEach((entry) => {
-    console.log(entry);
     if (entry.isIntersecting) {
       entry.target.classList.remove("section--hidden");
       sectionObserver.unobserve(entry.target);
@@ -159,3 +163,178 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 sections.forEach((el) => {
   sectionObserver.observe(el);
 });
+
+// Block Movement
+class Grid {
+  #grid;
+  lastMovedBlock = null;
+
+  constructor(blocks = []) {
+    this.grid = blocks; // Initialize grid using the setter
+  }
+
+  get grid() {
+    return this.#grid;
+  }
+
+  set grid(blocks = []) {
+    let emGrid = Array.from({ length: 2 }, () => Array(4).fill(null));
+    blocks.forEach((block) => {
+      let row = Math.floor(block.currentPosition / 4);
+      let column = block.currentPosition % 4;
+      emGrid[row][column] = block;
+    });
+    this.#grid = emGrid;
+  }
+
+  get emptyPositions() {
+    return this.#grid.flat().reduce((acc, el, i) => {
+      if (el === null) acc.push(i);
+      return acc;
+    }, []);
+  }
+
+  get moveableBlocks() {
+    const mBlocks = [];
+    this.emptyPositions.forEach((emptyIndex) => {
+      let emptyColumn = emptyIndex % 4;
+      let emptyRow = Math.floor(emptyIndex / 4);
+      const edgeLeftCase = emptyColumn === 0;
+      const edgeRightCase = emptyColumn === 3;
+
+      const adjacentPositions = [
+        emptyIndex + 4, // Down
+        edgeLeftCase ? -1 : emptyIndex - 1, // Left
+        emptyIndex - 4, // Up
+        edgeRightCase ? -1 : emptyIndex + 1, // Right
+      ].map((pos) => {
+        if (pos >= 0 && pos <= 7) {
+          return pos;
+        }
+        return null;
+      });
+
+      adjacentPositions.forEach((pos, direction) => {
+        if (
+          pos !== null &&
+          this.getValue(pos) !== null &&
+          this.getValue(pos) !== this.lastMovedBlock
+        ) {
+          mBlocks.push({
+            block: this.getValue(pos),
+            direction: direction,
+            destRow: emptyRow,
+            destColumn: emptyColumn,
+            destPos: emptyIndex,
+          });
+        }
+      });
+    });
+    return mBlocks;
+  }
+
+  getValue(pos) {
+    return this.grid[Math.floor(pos / 4)][pos % 4];
+  }
+
+  async moveBlock() {
+    const selectedMove =
+      this.moveableBlocks[
+        Math.floor(Math.random() * this.moveableBlocks.length)
+      ];
+
+    const { block, direction, destRow, destColumn, destPos } = selectedMove;
+
+    this.setPosition(block.row, block.column, null);
+
+    // Await the slide animation
+    await block.slide(direction);
+
+    block.updatePosition(destRow, destColumn, destPos);
+    this.setPosition(destRow, destColumn, block);
+    this.lastMovedBlock = block;
+  }
+
+  setPosition(row, column, value) {
+    this.grid[row][column] = value; // Set the value at the specified (x, y) position
+  }
+
+  set lastMovedBlock(block) {
+    this._lastMovedBlock = block;
+  }
+
+  get lastMovedBlock() {
+    return this._lastMovedBlock;
+  }
+}
+
+class Block {
+  #currentPosition;
+  #element;
+
+  constructor(el) {
+    this.#currentPosition = Number(el.dataset.pos);
+    this.#element = el;
+  }
+
+  get currentPosition() {
+    return this.#currentPosition;
+  }
+
+  set currentPosition(pos) {
+    this.#currentPosition = pos;
+    this.#element.dataset.pos = `${pos}`;
+  }
+
+  get target() {
+    return this.#element;
+  }
+
+  get row() {
+    return Math.floor(this.#currentPosition / 4);
+  }
+
+  get column() {
+    return this.#currentPosition % 4;
+  }
+
+  slide(direction) {
+    return new Promise((resolve) => {
+      // Reset Transition
+      this.target.style.transition = "all 2s";
+
+      // Set Transform
+      const xAxis = direction === 1 || direction === 3; // Horizontal movement
+      const magnitude = direction < 2 ? 1 : -1; // 1 for down/right, -1 for up/left
+      this.target.style.transform = xAxis
+        ? `translateX(${100 * magnitude}%)`
+        : `translateY(${100 * -magnitude}%)`;
+
+      // Animation Wait
+      setTimeout(() => {
+        this.target.style.transition = "none";
+
+        this.target.style.transform = "none";
+        resolve();
+      }, 2000);
+    });
+  }
+
+  updatePosition(row, column, destination) {
+    // Update the grid positioning
+    this.#element.style.gridColumn = `${column + 1}`;
+    this.#element.style.gridRow = `${row + 1}`;
+    this.currentPosition = destination; // Update current position
+  }
+}
+
+const x = [];
+blockEls.forEach((block) => {
+  x.push(new Block(block));
+});
+
+const grid = new Grid(x);
+
+setInterval(() => {
+  grid.moveBlock();
+}, 2500);

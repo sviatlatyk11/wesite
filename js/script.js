@@ -101,7 +101,7 @@ const nextCurrentInclude = () => {
 };
 
 const prevCurrentInclude = () => {
-  if (currentInclude - 1 > 0) currentInclude--;
+  if (currentInclude - 1 > -1) currentInclude--;
   else currentInclude = 4;
 
   setIncludes();

@@ -43,8 +43,8 @@ Md - 400
   --gradient-primary: ;
   --gradient-secondary: ;
   --gradient-tertiary: ;
-  --scroll-speed: 8s;
-  --scroll-gap: 6.2rem;
+  --scroll-speed: 4s;
+  --scroll-gap: 9.2rem;
 }
 
 * {
@@ -58,7 +58,7 @@ html {
 }
 
 body {
-  font-family: "Work Sans", serif;
+  font-family: "Noto Sans", sans-serif;
   line-height: 1;
   font-weight: 300;
   color: #c7c7c7;
@@ -135,7 +135,7 @@ body {
 }
 
 .header--secondary {
-  font-family: "Lora", serif;
+  font-family: "Noto Serif", serif;
   font-size: 5.2rem;
   font-weight: inherit;
   color: #363636;
@@ -177,7 +177,7 @@ body {
 }
 
 .nav__name {
-  font-family: "Lora", serif;
+  font-family: "Noto Serif", serif;
   font-size: 6.2rem;
   font-weight: inherit;
   letter-spacing: 0.5px;
@@ -221,7 +221,7 @@ body {
 }
 
 .content__header {
-  font-family: "Lora", serif;
+  font-family: "Noto Serif", serif;
   color: #3d3d3d;
   line-height: 1.4;
   margin-bottom: 7.4rem;
@@ -313,6 +313,7 @@ body {
   justify-content: flex-end;
   gap: 2.4rem;
   color: #363636;
+  border-radius: 0.2rem;
 
   transition: all 2s;
 }
@@ -347,7 +348,8 @@ body {
 
 .for__text {
   font-family: inherit;
-  font-size: 3.2rem;
+  font-size: 2.4rem;
+  line-height: 1.4;
 }
 
 /* INCLUDES SECTION */
@@ -399,7 +401,7 @@ body {
 }
 
 .include__number {
-  font-family: "Lora";
+  font-family: "Noto Serif";
   letter-spacing: 0.2rem;
   font-size: 5.2rem;
   color: #d2d2d2;
@@ -553,6 +555,7 @@ body {
   border-top: 1px solid #daddd8;
   background-color: #fafaff;
   overflow: hidden;
+  padding: 20rem 0;
 }
 
 .container--results {
@@ -586,7 +589,7 @@ body {
 }
 
 .results__text {
-  font-family: "Lora", serif;
+  font-family: "Noto Serif", serif;
   color: #3d3d3d;
   font-size: 5.2rem;
   line-height: 1.4;
@@ -645,7 +648,7 @@ body {
 
 /* FOOTER */
 .footer {
-  height: 70vh;
+  height: 50vh;
 }
 
 .footer__grid {
@@ -667,18 +670,19 @@ body {
 }
 
 .footer__text {
-  font-family: "Work Sans", serif;
+  font-family: inherit;
   font-size: 2.4rem;
   line-height: 1.4;
   margin-top: 4.8rem;
   color: #3d3d3d;
-  margin-bottom: 5.2rem;
+  margin-bottom: 3.2rem;
 }
 
 .footer__socials {
   display: flex;
   align-items: center;
   gap: 1.8rem;
+  margin-bottom: 5.2rem;
 }
 
 .social__icon {
@@ -687,7 +691,7 @@ body {
 }
 
 .footer__name {
-  font-family: "Lora", serif;
+  font-family: "Noto Serif", serif;
   font-weight: inherit;
   letter-spacing: 0.5px;
   font-style: italic;

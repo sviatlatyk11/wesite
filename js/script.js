@@ -19,6 +19,10 @@ const sections = document.querySelectorAll(".section--hidden");
 // Block Movement
 const blockEls = document.querySelectorAll(".for__block");
 
+// Dropdown Reveal
+const heroSection = document.querySelector(".hero");
+const dropdown = document.querySelector(".dropdown");
+
 // Results Accordian
 let currentResult = 0;
 
@@ -99,14 +103,14 @@ const staticIncludes = () => {
 };
 
 const nextCurrentInclude = () => {
-  if (currentInclude + 1 < 5) currentInclude++;
+  if (currentInclude + 1 <= 4) currentInclude++;
   else currentInclude = 0;
 
   setIncludes();
 };
 
 const prevCurrentInclude = () => {
-  if (currentInclude - 1 > -1) currentInclude--;
+  if (currentInclude - 1 >= 0) currentInclude--;
   else currentInclude = 4;
 
   setIncludes();
@@ -338,3 +342,19 @@ const grid = new Grid(x);
 setInterval(() => {
   grid.moveBlock();
 }, 2500);
+
+// Dropdown Reveal
+const revealDropdown = function (entries) {
+  [entry] = entries;
+  if (entry.isIntersecting) {
+    dropdown.classList.add("hidden");
+  } else {
+    dropdown.classList.remove("hidden");
+  }
+};
+
+const heroObserver = new IntersectionObserver(revealDropdown, {
+  root: null,
+  threshold: 0.1,
+});
+heroObserver.observe(heroSection);

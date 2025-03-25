@@ -37,14 +37,14 @@ Md - 400
   --color-primary-darker: #731c1e;
   --color-secondary-darker: ;
   --color-tertiary-darker: ;
-  --color-primary-opacity: ;
+  --color-primary-opacity: rgba(115, 28, 30, 0.5);
   --color-secondary-opacity: ;
   --color-tertiary-opacity: ;
   --gradient-primary: ;
   --gradient-secondary: ;
   --gradient-tertiary: ;
-  --scroll-speed: 4s;
-  --scroll-gap: 9.2rem;
+  --scroll-speed: 3.25s;
+  --scroll-gap: 9rem;
 }
 
 * {
@@ -140,6 +140,30 @@ body {
   font-weight: inherit;
   color: #363636;
   line-height: 1.4;
+}
+
+/* DROPDOWN SECTION */
+.dropdown {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.4rem 0;
+  background-color: rgba(218, 221, 216, 0.7);
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropdown .dropdown__text {
+  letter-spacing: 0.5px;
+  font-size: 1.2rem;
+  color: #2b2b2b;
+  text-transform: uppercase;
 }
 
 /* HEADER SECTION */

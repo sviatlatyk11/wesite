@@ -1,0 +1,143 @@
+/* 
+--- 01 TYPOGRAPHY SYSTEM
+
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights:
+Default - 300
+Md - 400
+
+- Line heights:
+sm - 1.4
+md - 1.5
+
+- Letter spacing
+
+
+--- 02 COLORS
+#C7C7C7 #f9f9f9 #e3e3e3 #d2d2d2
+
+
+#3D3D3D Text on #fafaff
+#c7c7c7 Text on #1C1C1C
+#363636 Text on #ECEBE4
+#2B2B2B Text On #DADDD8
+#fcebeb Text On #e5383b
+--- 05 Shadows
+
+--- 06 BORDER-RADIUS
+
+--- 07 WHITESPACE
+- Whitespace System (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+:root {
+  --color-primary: #e5383b;
+  --color-primary-darker: #731c1e;
+  --color-primary-opacity: rgba(115, 28, 30, 0.5);
+  --scroll-speed: 3.25s;
+  --scroll-gap: 9rem;
+  --serif: "Noto Serif", serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  line-height: 1;
+  font-weight: 300;
+  color: #c7c7c7;
+
+  background-color: #eef0f2;
+}
+
+/* GENERAL STYLES */
+.bg-img {
+  background-size: cover;
+  background-position: center;
+}
+
+.section {
+  padding: 15rem 3.2rem;
+}
+
+.container {
+  max-width: 130rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn--sm {
+  font-size: 1.8rem;
+  color: #3d3d3d;
+  background-color: #daddd8;
+  padding: 0.8rem 2rem;
+  border-radius: 0.2rem;
+
+  transition: all 0.4s ease;
+}
+
+.btn--sm:hover,
+.btn--sm:active {
+  background-color: var(--color-primary);
+  color: #fcebeb;
+}
+
+.btn--lg {
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  color: #222;
+
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #1c1c1c;
+
+  transition: all 0.4s ease;
+}
+
+.btn--lg:hover,
+.btn--lg:active {
+  border-bottom: 1px solid transparent;
+  background-color: var(--color-primary);
+  color: #fcebeb;
+  padding: 0.8rem 2rem;
+  border-radius: 0.2rem;
+}
+
+/* HEADINGS */
+.subheading {
+  color: #3d3d3d;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 3.2rem;
+}
+
+.header--secondary {
+  font-family: var(--serif);
+  font-size: 5.2rem;
+  font-weight: inherit;
+  color: #363636;
+  line-height: 1.5;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}

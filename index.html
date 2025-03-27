@@ -4,9 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ірина Кріль - Безплатний вебінар</title>
-    <!-- Stylesheet -->
-    <link href="css/style.css" rel="stylesheet" />
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,6 +12,11 @@
       rel="stylesheet"
     />
 
+    <!-- Stylesheet -->
+    <link href="css/general.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/queries.css" rel="stylesheet" />
+
     <script defer src="js/script.js"></script>
   </head>
   <body>
@@ -22,43 +24,41 @@
       <nav class="header__nav">
         <p class="nav__name">Ірина Кріль</p>
 
-        <div class="nav__sections">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a id="" class="btn nav__btn" href="#" data-section="for"
-                >Для тебе</a
-              >
-            </li>
-            <li class="nav__item">
-              <a class="btn nav__btn" href="#" data-section="includes"
-                >Для кого</a
-              >
-            </li>
-            <li class="nav__item">
-              <a class="btn nav__btn" href="#" data-section="results"
-                >Що ви отримаєте</a
-              >
-            </li>
-            <li class="nav__item">
-              <a
-                class="btn btn--sm nav__btn nav__cta"
-                href="https://t.me/+znjrbsjOJ4NhYmU6"
-                >Перейти</a
-              >
-            </li>
-          </ul>
-        </div>
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a id="" class="btn nav__btn" href="#" data-section="for"
+              >Для тебе</a
+            >
+          </li>
+          <li class="nav__item">
+            <a class="btn nav__btn" href="#" data-section="includes"
+              >Для кого</a
+            >
+          </li>
+          <li class="nav__item">
+            <a class="btn nav__btn" href="#" data-section="results"
+              >Що ви отримаєте</a
+            >
+          </li>
+          <li class="nav__item">
+            <a
+              class="btn btn--sm nav__btn nav__cta"
+              href="https://t.me/+znjrbsjOJ4NhYmU6"
+              >Перейти</a
+            >
+          </li>
+        </ul>
       </nav>
     </header>
 
     <main>
-      <section class="dropdown">
+      <section class="dropdown hidden">
         <p class="dropdown__text">
           Останній шанс отримати своє місце на цьому ексклюзивному вебінарі
         </p>
       </section>
 
-      <section class="hero section--hidden">
+      <section class="hero grid grid--2-cols section--hidden">
         <div class="hero__img" role="img"></div>
 
         <div class="hero__content">
@@ -133,11 +133,11 @@
         <div class="container">
           <div class="includes__header-wrapper">
             <p class="subheading">Що входить у програму</p>
-            <h2 class="header--secondary">Що ви отримаєте від вебінару ?</h2>
+            <h2 class="header--secondary">Що ви отримаєте від вебінару</h2>
           </div>
 
           <div class="includes__carousel">
-            <div class="include include--first include--1" data-tab="1">
+            <div class="include bg-img include--first include--1" data-tab="1">
               <p class="include__number">01</p>
 
               <div class="include__content">
@@ -148,7 +148,7 @@
               </div>
             </div>
 
-            <div class="include include--second include--2" data-tab="2">
+            <div class="include bg-img include--second include--2" data-tab="2">
               <p class="include__number">02</p>
 
               <div class="include__content">
@@ -157,7 +157,7 @@
               </div>
             </div>
 
-            <div class="include include--third include--3" data-tab="3">
+            <div class="include bg-img include--third include--3" data-tab="3">
               <p class="include__number">03</p>
 
               <div class="include__content">
@@ -166,7 +166,10 @@
               </div>
             </div>
 
-            <div class="include include--fourth include--hidden" data-tab="4">
+            <div
+              class="include bg-img include--fourth include--hidden"
+              data-tab="4"
+            >
               <p class="include__number">04</p>
 
               <div class="include__content">
@@ -174,19 +177,20 @@
                   Живий зворотний зв'язок
                 </p>
                 <p class="include__text">
-                  Практичні поради для покращення вашого життя
+                  Практичні поради для покращення життя
                 </p>
               </div>
             </div>
 
-            <div class="include include--fifth include--hidden" data-tab="5">
+            <div
+              class="include bg-img include--fifth include--hidden"
+              data-tab="5"
+            >
               <p class="include__number">05</p>
 
               <div class="include__content">
                 <p class="subheading subheading--include">Бонусні техніки</p>
-                <p class="include__text">
-                  Секретні поради для досягнення задоволення
-                </p>
+                <p class="include__text">Поради для досягнення задоволення</p>
               </div>
             </div>
 
@@ -319,7 +323,7 @@
       </section>
     </main>
 
-    <footer class="footer footer__grid section--hidden">
+    <footer class="grid grid--2-cols section--hidden">
       <div class="footer__content">
         <p class="subheading">Контакти</p>
 
@@ -353,18 +357,16 @@
         <p class="footer__name">Ірина Кріль</p>
       </div>
 
-      <div class="footer__cta">
-        <div class="footer__img" role="img"></div>
-      </div>
+      <div class="footer__img bg-img" role="img"></div>
     </footer>
     <!-- Ionicons -->
     <script
       type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.esm.js"
     ></script>
     <script
       nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.js"
     ></script>
   </body>
 </html>

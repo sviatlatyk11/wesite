@@ -447,4 +447,9 @@
   .footer__name {
     font-size: 3.2rem;
   }
+
+  .for__grid {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

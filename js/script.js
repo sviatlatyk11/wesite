@@ -178,13 +178,30 @@ class Grid {
   #grid;
   lastMovedBlock = null;
 
-  constructor(blocks = [], rows = 2, columns = 4) {
-    this.rows = rows;
-    this.columns = columns;
+  constructor(blocks = []) {
+    this.rows = this.calculateRows();
+    this.columns = this.calculateColumns();
     this.grid = blocks;
+    this.windowWidth = window.innerWidth;
   }
 
-  calculateColumns() {}
+  calculateColumns() {
+    if (window.innerWidth <= 592) {
+      return 2;
+    }
+    return 4;
+  }
+
+  calculateRows() {
+    if (window.innerWidth <= 592) {
+      return 3;
+    }
+    return 2;
+  }
+
+  compareWindow() {
+    return this.windowWidth >= 592 && window.innerWidth >= 592;
+  }
 
   get grid() {
     return this.#grid;
@@ -194,12 +211,25 @@ class Grid {
     let emGrid = Array.from({ length: this.rows }, () =>
       Array(this.columns).fill(null)
     );
+
     blocks.forEach((block) => {
       let row = Math.floor(block.currentPosition / this.columns);
       let column = block.currentPosition % this.columns;
       emGrid[row][column] = block;
     });
     this.#grid = emGrid;
+    this.initBlocks();
+  }
+
+  initBlocks() {
+    this.#grid.flat().forEach((el, pos) => {
+      if (el)
+        el.updatePosition(
+          Math.floor(pos / this.columns),
+          pos % this.columns,
+          pos
+        );
+    });
   }
 
   get emptyPositions() {
@@ -249,7 +279,9 @@ class Grid {
   }
 
   getValue(pos) {
-    return this.grid[Math.floor(pos / this.columns)][pos % this.columns];
+    const row = Math.floor(pos / this.columns);
+    const col = pos % this.columns;
+    return this.grid[row]?.[col] ?? null;
   }
 
   async moveBlock() {
@@ -343,11 +375,27 @@ class Block {
 
 const blocks = Array.from(blockEls).map((block) => new Block(block));
 
-const grid = new Grid(blocks);
+let grid = new Grid(blocks);
 
 setInterval(() => {
   grid.moveBlock();
 }, 2000);
+
+// Grid Responsive
+const resetBlockPositions = () => {
+  const positions = [0, 2, 3, 4, 5];
+  blockEls.forEach((block, i) => (block.dataset.pos = positions[i]));
+};
+
+window.addEventListener("resize", function (e) {
+  if (!grid.compareWindow()) {
+    resetBlockPositions();
+    grid = new Grid(
+      Array.from(blockEls).map((block) => new Block(block)),
+      window.innerWidth
+    );
+  }
+});
 
 // Dropdown Reveal
 const revealDropdown = function (entries) {

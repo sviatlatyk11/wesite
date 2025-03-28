@@ -219,25 +219,18 @@
 
 .for__block--1 {
   background-color: #ecebe4;
-  grid-column: 1;
 }
 .for__block--2 {
   background-color: #daddd8;
-  grid-column: 3;
 }
 .for__block--3 {
   background-color: #fafaff;
-  grid-column: 4;
 }
 .for__block--4 {
   background-color: #fafaff;
-  grid-column: 2;
-  grid-row: 2;
 }
 .for__block--5 {
   background-color: #ecebe4;
-  grid-column: 3;
-  grid-row: 2;
 }
 
 .for__icon {

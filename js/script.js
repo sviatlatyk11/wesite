@@ -373,27 +373,27 @@ class Block {
   }
 }
 
-const blocks = Array.from(blockEls).map((block) => new Block(block));
+const resetBlockPositions = () => {
+  const positions = window.innerWidth > 592 ? [0, 2, 3, 5, 6] : [0, 2, 3, 4, 5];
+  blockEls.forEach((block, i) => (block.dataset.pos = positions[i]));
+};
 
-let grid = new Grid(blocks);
+const createGrid = () => {
+  const blocks = Array.from(blockEls).map((block) => new Block(block));
+  return new Grid(blocks, window.innerWidth);
+};
+
+resetBlockPositions();
+let grid = createGrid();
 
 setInterval(() => {
   grid.moveBlock();
 }, 2000);
 
-// Grid Responsive
-const resetBlockPositions = () => {
-  const positions = [0, 2, 3, 4, 5];
-  blockEls.forEach((block, i) => (block.dataset.pos = positions[i]));
-};
-
-window.addEventListener("resize", function (e) {
+window.addEventListener("resize", function () {
   if (!grid.compareWindow()) {
     resetBlockPositions();
-    grid = new Grid(
-      Array.from(blockEls).map((block) => new Block(block)),
-      window.innerWidth
-    );
+    grid = createGrid();
   }
 });
 

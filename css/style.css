@@ -108,6 +108,8 @@
   height: 4rem;
   width: 4rem;
   color: #3d3d3d;
+
+  transition: all 0.4s;
 }
 
 /* HERO */

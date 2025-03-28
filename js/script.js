@@ -399,7 +399,7 @@ class Block {
   slide(direction, columns) {
     return new Promise((resolve) => {
       // Reset Transition
-      this.target.style.transition = "all 0.5s";
+      this.target.style.transition = "all 1.2s";
 
       // Set Transform
       const xAxis = direction === 1 || direction === 3; // Horizontal movement
@@ -413,7 +413,7 @@ class Block {
         this.target.style.transition = "none";
         this.target.style.transform = "none";
         resolve();
-      }, 500);
+      }, 1200);
     });
   }
 

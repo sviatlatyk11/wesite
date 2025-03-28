@@ -178,19 +178,25 @@ class Grid {
   #grid;
   lastMovedBlock = null;
 
-  constructor(blocks = []) {
-    this.grid = blocks; // Initialize grid using the setter
+  constructor(blocks = [], rows = 2, columns = 4) {
+    this.rows = rows;
+    this.columns = columns;
+    this.grid = blocks;
   }
+
+  calculateColumns() {}
 
   get grid() {
     return this.#grid;
   }
 
   set grid(blocks = []) {
-    let emGrid = Array.from({ length: 2 }, () => Array(4).fill(null));
+    let emGrid = Array.from({ length: this.rows }, () =>
+      Array(this.columns).fill(null)
+    );
     blocks.forEach((block) => {
-      let row = Math.floor(block.currentPosition / 4);
-      let column = block.currentPosition % 4;
+      let row = Math.floor(block.currentPosition / this.columns);
+      let column = block.currentPosition % this.columns;
       emGrid[row][column] = block;
     });
     this.#grid = emGrid;
@@ -206,18 +212,18 @@ class Grid {
   get moveableBlocks() {
     const mBlocks = [];
     this.emptyPositions.forEach((emptyIndex) => {
-      let emptyColumn = emptyIndex % 4;
-      let emptyRow = Math.floor(emptyIndex / 4);
+      let emptyColumn = emptyIndex % this.columns;
+      let emptyRow = Math.floor(emptyIndex / this.columns);
       const edgeLeftCase = emptyColumn === 0;
-      const edgeRightCase = emptyColumn === 3;
+      const edgeRightCase = emptyColumn === this.columns - 1;
 
       const adjacentPositions = [
-        emptyIndex + 4, // Down
+        emptyIndex + this.columns, // Down
         edgeLeftCase ? -1 : emptyIndex - 1, // Left
-        emptyIndex - 4, // Up
+        emptyIndex - this.columns, // Up
         edgeRightCase ? -1 : emptyIndex + 1, // Right
       ].map((pos) => {
-        if (pos >= 0 && pos <= 7) {
+        if (pos >= 0 && pos < this.rows * this.columns) {
           return pos;
         }
         return null;
@@ -243,23 +249,21 @@ class Grid {
   }
 
   getValue(pos) {
-    return this.grid[Math.floor(pos / 4)][pos % 4];
+    return this.grid[Math.floor(pos / this.columns)][pos % this.columns];
   }
 
   async moveBlock() {
+    const moves = this.moveableBlocks;
     if (moves.length === 0) return;
 
-    const selectedMove =
-      this.moveableBlocks[
-        Math.floor(Math.random() * this.moveableBlocks.length)
-      ];
+    const selectedMove = moves[Math.floor(Math.random() * moves.length)];
 
     const { block, direction, destRow, destColumn, destPos } = selectedMove;
 
     this.setPosition(block.row, block.column, null);
 
     // Await the slide animation
-    await block.slide(direction);
+    await block.slide(direction, this.columns);
 
     block.updatePosition(destRow, destColumn, destPos);
     this.setPosition(destRow, destColumn, block);
@@ -267,7 +271,7 @@ class Grid {
   }
 
   setPosition(row, column, value) {
-    this.grid[row][column] = value; // Set the value at the specified (x, y) position
+    this.grid[row][column] = value;
   }
 
   set lastMovedBlock(block) {
@@ -302,17 +306,17 @@ class Block {
   }
 
   get row() {
-    return Math.floor(this.#currentPosition / 4);
+    return Math.floor(this.#currentPosition / grid.columns);
   }
 
   get column() {
-    return this.#currentPosition % 4;
+    return this.#currentPosition % grid.columns;
   }
 
-  slide(direction) {
+  slide(direction, columns) {
     return new Promise((resolve) => {
       // Reset Transition
-      this.target.style.transition = "all 2s";
+      this.target.style.transition = "all 0.5s";
 
       // Set Transform
       const xAxis = direction === 1 || direction === 3; // Horizontal movement
@@ -324,31 +328,26 @@ class Block {
       // Animation Wait
       setTimeout(() => {
         this.target.style.transition = "none";
-
         this.target.style.transform = "none";
         resolve();
-      }, 2000);
+      }, 500);
     });
   }
 
   updatePosition(row, column, destination) {
-    // Update the grid positioning
     this.#element.style.gridColumn = `${column + 1}`;
     this.#element.style.gridRow = `${row + 1}`;
-    this.currentPosition = destination; // Update current position
+    this.currentPosition = destination;
   }
 }
 
-const x = [];
-blockEls.forEach((block) => {
-  x.push(new Block(block));
-});
+const blocks = Array.from(blockEls).map((block) => new Block(block));
 
-const grid = new Grid(x);
+const grid = new Grid(blocks);
 
 setInterval(() => {
   grid.moveBlock();
-}, 2500);
+}, 2000);
 
 // Dropdown Reveal
 const revealDropdown = function (entries) {

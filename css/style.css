@@ -545,6 +545,10 @@
 }
 
 /* FOOTER */
+.footer {
+  overflow: hidden;
+}
+
 .footer__content {
   display: flex;
   flex-direction: column;

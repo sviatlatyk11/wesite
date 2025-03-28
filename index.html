@@ -24,30 +24,40 @@
       <nav class="header__nav">
         <p class="nav__name">Ірина Кріль</p>
 
-        <ul class="nav__list">
-          <li class="nav__item">
-            <a id="" class="btn nav__btn" href="#" data-section="for"
-              >Для тебе</a
-            >
-          </li>
-          <li class="nav__item">
-            <a class="btn nav__btn" href="#" data-section="includes"
-              >Для кого</a
-            >
-          </li>
-          <li class="nav__item">
-            <a class="btn nav__btn" href="#" data-section="results"
-              >Що ви отримаєте</a
-            >
-          </li>
-          <li class="nav__item">
-            <a
-              class="btn btn--sm nav__btn nav__cta"
-              href="https://t.me/+znjrbsjOJ4NhYmU6"
-              >Перейти</a
-            >
-          </li>
-        </ul>
+        <div class="main-nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a id="" class="btn nav__btn" href="#" data-section="for"
+                >Для тебе</a
+              >
+            </li>
+            <li class="nav__item">
+              <a class="btn nav__btn" href="#" data-section="includes"
+                >Для кого</a
+              >
+            </li>
+            <li class="nav__item">
+              <a class="btn nav__btn" href="#" data-section="results"
+                >Що ви отримаєте</a
+              >
+            </li>
+            <li class="nav__item">
+              <a
+                class="btn btn--sm nav__btn nav__cta"
+                href="https://t.me/+znjrbsjOJ4NhYmU6"
+                >Перейти</a
+              >
+            </li>
+          </ul>
+
+          <button class="btn-mobile-nav btn-mobile-nav--open">
+            <ion-icon name="menu-outline" class="mobile-nav__icon"></ion-icon>
+          </button>
+
+          <button class="btn-mobile-nav btn-mobile-nav--close remove">
+            <ion-icon name="close-outline" class="mobile-nav__icon"></ion-icon>
+          </button>
+        </div>
       </nav>
     </header>
 
@@ -59,7 +69,7 @@
       </section>
 
       <section class="hero grid grid--2-cols section--hidden">
-        <div class="hero__img" role="img"></div>
+        <div class="hero__img bg-img" role="img"></div>
 
         <div class="hero__content">
           <p class="subheading">Для шукачів життя</p>
@@ -240,7 +250,6 @@
           <p class="scroll__item">Безплатний вебінар</p>
           <p class="scroll__item">Безплатний вебінар</p>
           <p class="scroll__item">Безплатний вебінар</p>
-
           <p class="scroll__item">Безплатний вебінар</p>
           <p class="scroll__item">Безплатний вебінар</p>
           <p class="scroll__item">Безплатний вебінар</p>
@@ -323,7 +332,7 @@
       </section>
     </main>
 
-    <footer class="grid grid--2-cols section--hidden">
+    <footer class="footer grid grid--2-cols section--hidden">
       <div class="footer__content">
         <p class="subheading">Контакти</p>
 

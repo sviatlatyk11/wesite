@@ -23,6 +23,11 @@ const blockEls = document.querySelectorAll(".for__block");
 const heroSection = document.querySelector(".hero");
 const dropdown = document.querySelector(".dropdown");
 
+// Mobile Navigation
+const openMobile = document.querySelector(".btn-mobile-nav--open");
+const closeMobile = document.querySelector(".btn-mobile-nav--close");
+const mobileNav = document.querySelector(".main-nav");
+
 // Results Accordian
 let currentResult = 0;
 
@@ -242,6 +247,8 @@ class Grid {
   }
 
   async moveBlock() {
+    if (moves.length === 0) return;
+
     const selectedMove =
       this.moveableBlocks[
         Math.floor(Math.random() * this.moveableBlocks.length)
@@ -358,3 +365,16 @@ const heroObserver = new IntersectionObserver(revealDropdown, {
   threshold: 0.1,
 });
 heroObserver.observe(heroSection);
+
+// Mobile Navigation
+openMobile.addEventListener("click", () => {
+  mobileNav.classList.add("nav-open");
+  closeMobile.classList.remove("remove");
+  openMobile.classList.add("remove");
+});
+
+closeMobile.addEventListener("click", () => {
+  mobileNav.classList.remove("nav-open");
+  closeMobile.classList.add("remove");
+  openMobile.classList.remove("remove");
+});

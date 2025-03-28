@@ -124,7 +124,7 @@
         rgba(28, 28, 28, 0.2),
         var(--color-primary-opacity)
       ),
-      url("../images/photo_2_2025-03-19_12-08-50.jpg");
+      url("../content/img/photos/photo_2_2025-03-19_12-08-50.jpg");
     background-size: cover;
     background-position: right center;
   }

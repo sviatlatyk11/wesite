@@ -167,17 +167,23 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 65rem;
+    height: 55rem;
     transform: translateY(-100%);
 
     flex-direction: column;
-    justify-content: center;
+    align-items: start;
+    padding: 12.8rem 0 0 2.4rem;
     gap: 8rem;
-    z-index: 1;
 
+    z-index: 1;
     opacity: 0;
     pointer-events: none;
     visibility: hidden;
+  }
+
+  .btn--sm {
+    font-size: 2.4rem;
+    padding: 1rem 3.2rem;
   }
 
   .nav-open .nav__list {

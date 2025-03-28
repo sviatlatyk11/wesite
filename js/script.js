@@ -3,8 +3,10 @@
 const resultContents = document.querySelectorAll(".results__content");
 const resultBtnLeft = document.querySelector(".results__btn--left");
 const resultBtnRight = document.querySelector(".results__btn--right");
+const resultsSection = document.querySelector(".results__content--wrapper");
 
 // Includes Carousel
+const includesCarousel = document.querySelector(".includes__carousel");
 const includes = document.querySelectorAll(".include");
 const includesBtnLeft = document.querySelector(".includes__btn--left");
 const includesBtnRight = document.querySelector(".includes__btn--right");
@@ -43,16 +45,16 @@ const setResult = () => {
 };
 setResult();
 
-const nextResult = function (e) {
-  e.preventDefault();
+const nextResult = function (e = null) {
+  if (e) e.preventDefault();
   if (currentResult < resultContents.length - 1) currentResult++;
   else currentResult = 0;
 
   setResult();
 };
 
-const prevResult = function (e) {
-  e.preventDefault();
+const prevResult = function (e = null) {
+  if (e) e.preventDefault();
   if (currentResult > 0) currentResult--;
   else currentResult = 2;
 
@@ -61,6 +63,28 @@ const prevResult = function (e) {
 
 resultBtnRight.addEventListener("click", nextResult);
 resultBtnLeft.addEventListener("click", prevResult);
+
+// Results Mobile Swiping
+let startX = 0;
+let endX = 0;
+
+resultsSection.addEventListener("touchstart", function (e) {
+  startX = e.touches[0].clientX;
+});
+
+resultsSection.addEventListener("touchmove", function (e) {
+  endX = e.touches[0].clientX;
+});
+
+resultsSection.addEventListener("touchend", function () {
+  let deltaX = startX - endX;
+
+  if (deltaX > 30) {
+    nextResult();
+  } else if (deltaX < -30) {
+    prevResult();
+  }
+});
 
 // Includes Accordian
 let currentInclude = 1;
@@ -125,6 +149,33 @@ setIncludes();
 
 includesBtnLeft.addEventListener("click", prevCurrentInclude);
 includesBtnRight.addEventListener("click", nextCurrentInclude);
+
+// Mobile Includes Scrolling
+let startY = 0;
+let endY = 0;
+let scrolls = 0;
+
+includesCarousel.addEventListener("touchstart", function (e) {
+  if (scrolls < 4) e.preventDefault();
+  startY = e.touches[0].clientY;
+});
+
+includesCarousel.addEventListener("touchmove", function (e) {
+  endY = e.touches[0].clientY;
+});
+
+includesCarousel.addEventListener("touchend", function () {
+  let deltaY = startY - endY;
+
+  if (deltaY > 30) {
+    nextCurrentInclude();
+  } else if (deltaY < -30) {
+    prevCurrentInclude();
+  }
+
+  scrolls++;
+  if (scrolls >= 5) scrolls = 0;
+});
 
 // Nav Opacity
 nav.addEventListener("mouseover", function (e) {
